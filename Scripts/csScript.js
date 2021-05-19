@@ -20,17 +20,6 @@ let func1 = setInterval(animeOne, 3000);
 let func2 = setInterval(animeTwo, 2000);
 let func3 = setInterval(animeThree, 4000);
 
-// this event is used to switch the animated-gallery
-// and courosel link to gallery link in navigation when
-// the size of screen is changed accordingly.
-window.onload = () => {
-    const width = window.innerWidth;
-    let gallary_link = document.getElementById('gallery-link');
-    if(width > 780)
-        gallary_link.href = "#img-gallery-pc";
-    else
-        gallary_link.href = "#img-gallery-mobile";
-}
 
 // menu_closing function
 menu_close.addEventListener('click', function()
@@ -44,6 +33,7 @@ menu_open.addEventListener('click', function()
 {
     menu_open.style.display = "none";
     menu_close.style.display = "block";
+
 });
 
 // onmouseover event to embed the youtube link to iframe
@@ -54,7 +44,7 @@ bg_img.onmouseover = () => {
     "https://www.youtube.com/embed/lPAAlbd27rs?controls=0";
 }
 
-// onmouseout event to remove embeded link from iframe
+//onmouseout event to remove embeded link from iframe
 bg_video.onmouseout = () => {
     bg_img.style.zIndex = "1";
     bg_video.style.zIndex = "-1";
@@ -90,4 +80,58 @@ window.onscroll = () => {
     const OFFSET = window.innerHeight / window.innerWidth;
 
     bar.style.width = (OFFSET*scroll_pos).toString() + "px";
+}
+
+window.onscroll = () => 
+{
+    let bar = document.getElementById("nav-bar");
+    let arr = document.getElementsByClassName('nav-link');
+    let drop_arr = document.getElementsByClassName('dropdown-menu');
+    if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80)
+    {
+        bar.style.backgroundColor = "white";
+        for(var i=0; i<arr.length; i++)
+        {
+            arr[i].style.color = "black";
+        }
+        for(var i=0; i<drop_arr.length; i++)
+        {
+            drop_arr[i].style.backgroundColor = "white";
+            let links = drop_arr[i].getElementsByTagName('a');
+            for(var j=0; j<links.length; j++)
+            {
+                links[j].style.color = "black";
+            }
+        }
+        document.getElementById('menu-open').style.color = "black";
+        document.getElementById('menu-close').style.color = "black";
+    }
+    else
+    {
+        if(window.innerWidth < 768)
+        {
+            document.getElementById('menu-open').style.color = "white";
+            document.getElementById('menu-close').style.color = "white";
+            bar.style.backgroundColor = "transparent";
+            document.getElementById('navigation').style.backgroundColor = "white";
+            
+        }
+        else
+        {
+            bar.style.backgroundColor = "transparent";
+            for(var i=0; i<arr.length; i++)
+            {
+                arr[i].style.color = "white";
+            }
+            for(var i=0; i<drop_arr.length; i++)
+            {
+                drop_arr[i].style.backgroundColor = "transparent";
+                let links = drop_arr[i].getElementsByTagName('a');
+                for(var j=0; j<links.length; j++)
+                {
+                    links[j].style.color = "white";
+                }
+            }
+        }
+    }
 }
