@@ -448,7 +448,7 @@ h1 {
 
 
 
-@media all and (max-width: 780px)
+@media all and (max-width: 978px)
 {
     .navbar .navbar-brand{
         margin: 0 15px;
@@ -465,6 +465,15 @@ h1 {
     }
     .gallery-mobile {
         display: block;
+    }
+    .navbar .navbar-nav>li:hover
+    {
+        background-color: transparent;
+    }
+    #navigation ul li ul li:hover >a
+    {
+        background-color: none;
+        color: #000;
     }
 }
 
