@@ -31,16 +31,24 @@ menu_open.addEventListener('click', function()
 });
 
 bg_img.onmouseover = () => {
-    bg_img.style.zIndex = "-1";
-    bg_video.style.zIndex = "1";
-    cs_video.src = 
-    "https://www.youtube.com/embed/lPAAlbd27rs?controls=0";
+    if(window.innerWidth > 978)
+    {
+        document.getElementById("nav-bar").style.zIndex = "-1";
+        bg_img.style.zIndex = "-1";
+        bg_video.style.zIndex = "1";
+        cs_video.src = 
+        "https://www.youtube.com/embed/lPAAlbd27rs?controls=0";
+    }
 }
 
 bg_video.onmouseout = () => {
-    bg_img.style.zIndex = "1";
-    bg_video.style.zIndex = "-1";
-    cs_video.src = null;
+   if(window.innerWidth > 978)
+   {
+        document.getElementById("nav-bar").style.zIndex = "1";
+        bg_img.style.zIndex = "1";
+        bg_video.style.zIndex = "-1";
+        cs_video.src = null;
+   }
 }
 
 function animeOne() {
